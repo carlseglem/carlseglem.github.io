@@ -28,6 +28,11 @@
           "_id": 5
         },
         {
+          "category": "E",
+          "amount": 46,
+          "_id": 10
+        },
+        {
           "category": "W",
           "amount": 82,
           "_id": 6
