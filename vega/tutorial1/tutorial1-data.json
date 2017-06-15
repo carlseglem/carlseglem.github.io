@@ -7,51 +7,16 @@
     {
       "name": "table",
       "values": [
-        {
-          "category": "A",
-          "amount": 28,
-          "_id": 2
-        },
-        {
-          "category": "B",
-          "amount": 55,
-          "_id": 3
-        },
-        {
-          "category": "C",
-          "amount": 43,
-          "_id": 4
-        },
-        {
-          "category": "D",
-          "amount": 91,
-          "_id": 5
-        },
-        {
-          "category": "E",
-          "amount": 46,
-          "_id": 10
-        },
-        {
-          "category": "W",
-          "amount": 82,
-          "_id": 6
-        },
-        {
-          "category": "X",
-          "amount": 52,
-          "_id": 7
-        },
-        {
-          "category": "Y",
-          "amount": 18,
-          "_id": 8
-        },
-        {
-          "category": "Z",
-          "amount": 88,
-          "_id": 9
-        }
+        {"category": "A", "amount": 28},
+        {"category": "B", "amount": 55},
+        {"category": "C", "amount": 43},
+        {"category": "D", "amount": 91},
+        {"category": "E", "amount": 46},
+        {"category": "F", "amount": 70},
+        {"category": "W", "amount": 82},
+        {"category": "X", "amount": 52},
+        {"category": "Y", "amount": 18},
+        {"category": "Z", "amount": 88}
       ]
     }
   ],
@@ -60,83 +25,50 @@
       "name": "tooltip",
       "value": {},
       "on": [
-        {
-          "events": "rect:mouseover",
-          "update": "datum"
-        },
-        {
-          "events": "rect:mouseout",
-          "update": "{}"
-        }
+        {"events": "rect:mouseover", "update": "datum"},
+        {"events": "rect:mouseout",  "update": "{}"}
       ]
     }
   ],
+
   "scales": [
     {
       "name": "xscale",
       "type": "band",
-      "domain": {
-        "data": "table",
-        "field": "category"
-      },
+      "domain": {"data": "table", "field": "category"},
       "range": "width",
       "padding": 0.05,
       "round": true
     },
     {
       "name": "yscale",
-      "domain": {
-        "data": "table",
-        "field": "amount"
-      },
+      "domain": {"data": "table", "field": "amount"},
       "nice": true,
       "range": "height"
     }
   ],
+
   "axes": [
-    {
-      "orient": "bottom",
-      "scale": "xscale"
-    },
-    {
-      "orient": "left",
-      "scale": "yscale"
-    }
+    { "orient": "bottom", "scale": "xscale" },
+    { "orient": "left", "scale": "yscale" }
   ],
+
   "marks": [
     {
       "type": "rect",
-      "from": {
-        "data": "table"
-      },
+      "from": {"data":"table"},
       "encode": {
         "enter": {
-          "x": {
-            "scale": "xscale",
-            "field": "category"
-          },
-          "width": {
-            "scale": "xscale",
-            "band": 1
-          },
-          "y": {
-            "scale": "yscale",
-            "field": "amount"
-          },
-          "y2": {
-            "scale": "yscale",
-            "value": 0
-          }
+          "x": {"scale": "xscale", "field": "category"},
+          "width": {"scale": "xscale", "band": 1},
+          "y": {"scale": "yscale", "field": "amount"},
+          "y2": {"scale": "yscale", "value": 0}
         },
         "update": {
-          "fill": {
-            "value": "steelblue"
-          }
+          "fill": {"value": "steelblue"}
         },
         "hover": {
-          "fill": {
-            "value": "red"
-          }
+          "fill": {"value": "red"}
         }
       }
     },
@@ -144,38 +76,17 @@
       "type": "text",
       "encode": {
         "enter": {
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "bottom"
-          },
-          "fill": {
-            "value": "#333"
-          }
+          "align": {"value": "center"},
+          "baseline": {"value": "bottom"},
+          "fill": {"value": "#333"}
         },
         "update": {
-          "x": {
-            "scale": "xscale",
-            "signal": "tooltip.category",
-            "band": 0.5
-          },
-          "y": {
-            "scale": "yscale",
-            "signal": "tooltip.amount",
-            "offset": -2
-          },
-          "text": {
-            "signal": "tooltip.amount"
-          },
+          "x": {"scale": "xscale", "signal": "tooltip.category", "band": 0.5},
+          "y": {"scale": "yscale", "signal": "tooltip.amount", "offset": -2},
+          "text": {"signal": "tooltip.amount"},
           "fillOpacity": [
-            {
-              "test": "datum === tooltip",
-              "value": 0
-            },
-            {
-              "value": 1
-            }
+            {"test": "datum === tooltip", "value": 0},
+            {"value": 1}
           ]
         }
       }
